@@ -30,7 +30,7 @@ module Enumerable
 
   def my_count
     return self.size unless block_given?
-    self.reduce(0) do |a, v|
+    self.my_inject(0) do |a, v|
       a = a + 1 if yield v
       a
     end
@@ -40,6 +40,12 @@ module Enumerable
     mapped = []
     self.my_each { |v| mapped << (yield v) }
     mapped
+  end
+
+  def my_inject(initial_value)
+    current = initial_value
+    self.my_each { |v| current = (yield current, v)}
+    current
   end
 end
 
