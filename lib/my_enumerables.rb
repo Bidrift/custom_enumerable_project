@@ -1,5 +1,11 @@
 module Enumerable
   # Your code goes here
+  def my_each_with_index
+    for i in 0..(self.size-1) do
+      yield self[i], i
+    end
+    self
+  end
 end
 
 # You will first have to define my_each
