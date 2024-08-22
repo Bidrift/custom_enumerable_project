@@ -27,6 +27,14 @@ module Enumerable
     self.my_each { |v| return false if yield v }
     true
   end
+
+  def my_count
+    return self.size unless block_given?
+    self.reduce(0) do |a, v|
+      a = a + 1 if yield v
+      a
+    end
+  end
 end
 
 # You will first have to define my_each
