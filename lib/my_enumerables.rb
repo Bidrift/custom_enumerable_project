@@ -35,6 +35,12 @@ module Enumerable
       a
     end
   end
+
+  def my_map
+    mapped = []
+    self.my_each { |v| mapped << (yield v) }
+    mapped
+  end
 end
 
 # You will first have to define my_each
