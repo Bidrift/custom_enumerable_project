@@ -22,6 +22,11 @@ module Enumerable
     self.my_each { |v| return true if yield v}
     false
   end
+
+  def my_none?
+    self.my_each { |v| return false if yield v }
+    true
+  end
 end
 
 # You will first have to define my_each
